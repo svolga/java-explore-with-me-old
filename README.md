@@ -1,3 +1,2 @@
 # java-explore-with-me
-Проект ExploreWithMe
-Java 11
+Проект Explore With Me Java 11
