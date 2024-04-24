@@ -16,8 +16,6 @@ import ru.practicum.ewm.stats.service.StatsService;
 import ru.practicum.ewm.stats.utils.Constant;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -46,5 +44,4 @@ public class StatsController {
         log.info("GET request: start ={}, end={}, uris = {}, unique = {}", start, end, uris, unique);
         return statsService.getStats(start, end, uris, unique);
     }
-
 }
