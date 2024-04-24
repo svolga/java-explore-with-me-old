@@ -16,8 +16,7 @@ public interface HitJpaRepository extends JpaRepository<Hit, Long> {
             "WHERE h.timestamp >= ?1  AND h.timestamp <= ?2 AND " +
             "(0 = ?3 OR h.uri in ?4) " +
             "GROUP BY h.app, h.uri " +
-            "ORDER BY COUNT(h.*) DESC"
-            , nativeQuery = true)
+            "ORDER BY COUNT(h.*) DESC", nativeQuery = true)
     List<Object[]> findStatisticsBetweenStartAndEnd(LocalDateTime start, LocalDateTime end, int isUris, List<String> uris);
 
     @Query(value = "SELECT v.app, v.uri, COUNT(v.*) " +
@@ -28,9 +27,6 @@ public interface HitJpaRepository extends JpaRepository<Hit, Long> {
             "(0 = ?3 OR h.uri in ?4) " +
             ") AS v " +
             "GROUP BY v.app, v.uri " +
-            "ORDER BY COUNT(v.*) DESC"
-            , nativeQuery = true)
+            "ORDER BY COUNT(v.*) DESC", nativeQuery = true)
     List<Object[]> findStatisticsBetweenStartAndEndUniqueIp(LocalDateTime start, LocalDateTime end, int isUris, List<String> uris);
-
-
 }
