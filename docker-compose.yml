@@ -1,6 +1,6 @@
 version: '3.1'
 services:
-  ewm-service:
+  stats-server:
     build: stats/stats-server
     image: stats_image
     container_name: stats-server
@@ -24,7 +24,7 @@ services:
         - POSTGRES_USER=ewm_stats
         - POSTGRES_DB=stats
 
-  ewm-main:
+  ewm-service:
     build: main-service
     image: main-service-image
     container_name: main_service_container
@@ -33,12 +33,12 @@ services:
 
     depends_on:
       - ewm-db
-      - ewm-service
+      - stats-server
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://main-db:5433/ewm_main
       - SPRING_DATASOURCE_USERNAME=ewm_main
       - SPRING_DATASOURCE_PASSWORD=ewm_main
-      - STATS_SERVER_URL=http://ewm-service:9090
+      - STATS_SERVER_URL=http://stats-server:9090
 
   ewm-db:
     image: postgres:14-alpine
