@@ -33,9 +33,9 @@ public class SampleController {
 
     @GetMapping("stats")
     public ResponseEntity<Object> getStats(@Valid @RequestParam("start") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime start,
-                                    @Valid @RequestParam("end") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime end,
-                                    @RequestParam(value = "uris", defaultValue = "", required = false) List<String> uris,
-                                    @RequestParam(value = "unique", defaultValue = "false", required = false) boolean unique){
+                                           @Valid @RequestParam("end") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime end,
+                                           @RequestParam(value = "uris", defaultValue = "", required = false) List<String> uris,
+                                           @RequestParam(value = "unique", defaultValue = "false", required = false) boolean unique) {
 
         log.info("GET request: start ={}, end={}, uris = {}, unique = {}", start, end, uris, unique);
         return client.getStats(start, end, uris, unique);
