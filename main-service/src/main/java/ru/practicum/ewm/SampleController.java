@@ -40,6 +40,4 @@ public class SampleController {
         log.info("GET request: start ={}, end={}, uris = {}, unique = {}", start, end, uris, unique);
         return client.getStats(start, end, uris, unique);
     }
-
-
 }
