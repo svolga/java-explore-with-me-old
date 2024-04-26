@@ -35,6 +35,7 @@ public class StatsServiceImpl implements StatsService {
     public List<ViewStats> getStats(LocalDateTime start, LocalDateTime end, List<String> uris, boolean unique) {
 
         int isSearchUrl = (uris == null || uris.isEmpty() ? 0 : 1);
+
         List<Object[]> list = unique ?
                 hitJpaRepository.findStatisticsBetweenStartAndEndUniqueIp(start, end, isSearchUrl, uris) :
                 hitJpaRepository.findStatisticsBetweenStartAndEnd(start, end, isSearchUrl, uris);
@@ -42,6 +43,7 @@ public class StatsServiceImpl implements StatsService {
         List<ViewStats> stats = convertViewStatesFromObject(list);
         log.info("stats --> {}", stats);
         return stats;
+
     }
 
     private List<ViewStats> convertViewStatesFromObject(List<Object[]> list) {
